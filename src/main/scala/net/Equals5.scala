@@ -14,7 +14,7 @@ object Equals5 {
     import c.universe._
 
     val tree = n.tree match {
-      case Literal(Constant(x: Int)) if x > 0 =>
+      case Literal(Constant(x: Int)) if x == 5 =>
         q"_root_.net.Equals5($n)"
       case Literal(Constant(x: Int)) =>
         c.abort(c.enclosingPosition, s"$x != 0")
