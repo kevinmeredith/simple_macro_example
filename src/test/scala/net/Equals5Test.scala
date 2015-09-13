@@ -13,11 +13,9 @@ class Equals5Test extends FlatSpec with Matchers {
 		}
 	}
 
-	import Equals5.wrapInt
-
 	it should "not compile when using the macro constructor to build an `Equals5` with a constant" in {
 		"""
 		import net.Equals5._; wrapInt(-555)
 		""".shouldNot(compile)
-	}
+	}	
 }

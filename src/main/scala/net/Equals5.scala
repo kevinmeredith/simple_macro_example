@@ -8,9 +8,10 @@ case class Equals5(value: Int) {
 }
 
 object Equals5 {
-	implicit def wrapInt(n: Int): Equals5 = macro verifyIntEquals5
 
-	def verifyIntEquals5(c: Context)(n: c.Expr[Int]): c.Expr[Equals5] = {
+  def build(n: Int): Equals5 = macro verifyIntEquals5
+
+  def verifyIntEquals5(c: Context)(n: c.Expr[Int]): c.Expr[Equals5] = {
     import c.universe._
 
     val tree = n.tree match {
