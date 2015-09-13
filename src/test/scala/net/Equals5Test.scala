@@ -7,7 +7,17 @@ import org.scalatest.prop.Checkers._
 
 class Equals5Test extends FlatSpec with Matchers {
 
-	"Trying to create an `Equals5` case class with an invalid Int" should "fail to compile" in {
-		"Equals5(-555)" shouldNot compile
+	it should "throw an IllegalArgumentException when trying to make an invalid `Equals5` directly" in {
+		intercept[IllegalArgumentException] {
+			Equals5(-555) //
+		}
+	}
+
+	import Equals5.wrapInt
+
+	it should "not compile when using the macro constructor to build an `Equals5` with a constant" in {
+		"""
+		import net.Equals5._; wrapInt(-555)
+		""".shouldNot(compile)
 	}
 }
